@@ -61,19 +61,21 @@ class _MyHomePageState extends State<MyHomePage> {
               child: TopBar(),
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
-                  0.2,
+                  0.15,
             ),
             Container(
               child: MainConverter(),
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
                   0.4,
+              width:MediaQuery.of(context).size.width * 0.8  ,
+              
             ),
             Container(
               child: MainKeyboard(),
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
-                  0.3,
+                  0.37,
             ),
             Container(
               child: RaisedButton(
