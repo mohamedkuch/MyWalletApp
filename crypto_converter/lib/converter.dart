@@ -13,7 +13,7 @@ class _MainConverterState extends State<MainConverter> {
         children: <Widget>[
           Container(
             width: double.infinity,
-            height: constraint.maxHeight * 0.46,
+            height: constraint.maxHeight * 0.47,
             decoration: new BoxDecoration(
               color: Color.fromRGBO(74, 74, 74, 1),
               borderRadius: new BorderRadius.all(
@@ -23,7 +23,7 @@ class _MainConverterState extends State<MainConverter> {
           ),
           Container(
             width: double.infinity,
-            height: constraint.maxHeight * 0.46,
+            height: constraint.maxHeight * 0.47,
             decoration: new BoxDecoration(
               color: Color.fromRGBO(74, 74, 74, 1),
               borderRadius: new BorderRadius.all(
@@ -31,17 +31,23 @@ class _MainConverterState extends State<MainConverter> {
               ),
             ),
             child: SizedBox(),
-            margin: EdgeInsets.only(top:  constraint.maxHeight * (0.46 +0.08) ),
+            margin: EdgeInsets.only(top: constraint.maxHeight * (0.46 + 0.06)),
           ),
-           Container(
+          Container(
             child: Center(
               child: Container(
-                color: Theme.of(context).accentColor,
-                child: Icon(Icons.ac_unit),
+                child: Icon(
+                  Icons.repeat,
+                  color: Theme.of(context).accentColor,
+                ),
               ),
             ),
-            height: constraint.maxHeight * 0.08,
-            margin: EdgeInsets.only(top:  constraint.maxHeight * 0.46),
+            height: constraint.maxHeight * 0.2,
+            margin: EdgeInsets.only(top: constraint.maxHeight * (0.4)),
+            decoration: new BoxDecoration(
+              color: Theme.of(context).primaryColor,
+              shape: BoxShape.circle,
+            ),
           ),
         ],
       );
