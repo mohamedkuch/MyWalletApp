@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import './top_bar.dart';
+import './converter.dart';
+import './keyboard.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -48,52 +52,56 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final topBar = Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          Expanded(
-            flex: 1,
-            child: IconButton(
-              icon: Icon(
-                Icons.sort,
-                size: 30,
-              ),
-              onPressed: () {},
-              color: Theme.of(context).accentColor,
-            ),
-          ),
-          Expanded(
-            flex: 2,
-            child: SizedBox(),
-          ),
-          Expanded(
-            flex: 1,
-            child: IconButton(
-              icon: Icon(
-                Icons.brightness_6,
-                size: 30,
-              ),
-              onPressed: () {},
-              color: Theme.of(context).accentColor,
-            ),
-          ),
-        ],
-      ),
-      height: (MediaQuery.of(context).size.height -
-              MediaQuery.of(context).padding.top) *
-          0.2,
-    );
-
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            Container(
+              child: TopBar(),
+              height: (MediaQuery.of(context).size.height -
+                      MediaQuery.of(context).padding.top) *
+                  0.2,
+            ),
+            Container(
+              child: MainConverter(),
+              height: (MediaQuery.of(context).size.height -
+                      MediaQuery.of(context).padding.top) *
+                  0.4,
+            ),
+            Container(
+              child: MainKeyboard(),
+              height: (MediaQuery.of(context).size.height -
+                      MediaQuery.of(context).padding.top) *
+                  0.3,
+            ),
+            Container(
+              child: RaisedButton(
+                onPressed: () {},
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                color: Theme.of(context).accentColor,
+                elevation: 3,
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: Center(
+                    child: Text(
+                      'Convert',
+                      style: TextStyle(fontSize: 22),
+                    ),
+                  ),
+                ),
+              ),
+              height: (MediaQuery.of(context).size.height -
+                      MediaQuery.of(context).padding.top) *
+                  0.1,
+            )
+          ],
+        ),
+      ),
 
-      body: topBar,
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
