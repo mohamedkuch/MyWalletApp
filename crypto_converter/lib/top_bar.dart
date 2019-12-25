@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TopBar extends StatefulWidget {
-  @override
-  _TopBarState createState() => _TopBarState();
-}
-
-class _TopBarState extends State<TopBar> {
+class TopBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(

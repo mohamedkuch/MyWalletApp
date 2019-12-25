@@ -84,6 +84,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 color: Theme.of(context).accentColor,
+                padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.025),
+
                 elevation: 3,
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.8,
@@ -95,9 +97,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
-              height: (MediaQuery.of(context).size.height -
-                      MediaQuery.of(context).padding.top) *
-                  0.1,
             )
           ],
         ),

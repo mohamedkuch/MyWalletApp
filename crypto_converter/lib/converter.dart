@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import './converter_single.dart';
+
 
 class MainConverter extends StatefulWidget {
   @override
@@ -20,6 +22,8 @@ class _MainConverterState extends State<MainConverter> {
                 new Radius.circular(20.0),
               ),
             ),
+            child: ConverterSingle(100.00 , 'British Pound' , 'GBP'),
+
           ),
           Container(
             width: double.infinity,
@@ -30,8 +34,10 @@ class _MainConverterState extends State<MainConverter> {
                 new Radius.circular(20.0),
               ),
             ),
-            child: SizedBox(),
-            margin: EdgeInsets.only(top: constraint.maxHeight * (0.46 + 0.06)),
+            child: ConverterSingle(122.78 , 'US Dollar' , 'USD'),
+            margin: EdgeInsets.only(
+              top: constraint.maxHeight * (0.46 + 0.06),
+            ),
           ),
           Container(
             child: Center(
@@ -43,7 +49,9 @@ class _MainConverterState extends State<MainConverter> {
               ),
             ),
             height: constraint.maxHeight * 0.2,
-            margin: EdgeInsets.only(top: constraint.maxHeight * (0.4)),
+            margin: EdgeInsets.only(
+              top: constraint.maxHeight * (0.4),
+            ),
             decoration: new BoxDecoration(
               color: Theme.of(context).primaryColor,
               shape: BoxShape.circle,
