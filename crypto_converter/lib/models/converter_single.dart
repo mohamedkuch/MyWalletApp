@@ -38,8 +38,12 @@ class ConverterSingle extends StatelessWidget {
               ),
               Expanded(
                 flex: 2,
-                child: Center(
-                  child:CurrencySingle(),
+                child: Container(
+                  child: Align(
+                    child: CurrencySingle(),
+                    alignment: Alignment.centerRight,
+                  ),
+                  margin: EdgeInsets.only(right: 20),
                 ),
               ),
             ],
