@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import './models/converter_single.dart';
 
-
 class MainConverter extends StatefulWidget {
   @override
   _MainConverterState createState() => _MainConverterState();
@@ -15,42 +14,42 @@ class _MainConverterState extends State<MainConverter> {
         children: <Widget>[
           Container(
             width: double.infinity,
-            height: constraint.maxHeight * 0.47,
+            height: constraint.maxHeight * 0.46,
             decoration: new BoxDecoration(
               color: Color.fromRGBO(74, 74, 74, 1),
               borderRadius: new BorderRadius.all(
                 new Radius.circular(20.0),
               ),
             ),
-            child: ConverterSingle(100.00 , 'British Pound' , 'GBP'),
-
+            child: ConverterSingle(100.00, 'British Pound', 'GBP'),
           ),
           Container(
             width: double.infinity,
-            height: constraint.maxHeight * 0.47,
+            height: constraint.maxHeight * 0.48,
             decoration: new BoxDecoration(
               color: Color.fromRGBO(74, 74, 74, 1),
               borderRadius: new BorderRadius.all(
                 new Radius.circular(20.0),
               ),
             ),
-            child: ConverterSingle(122.78 , 'US Dollar' , 'USD'),
+            child: ConverterSingle(122.78, 'US Dollar', 'USD'),
             margin: EdgeInsets.only(
-              top: constraint.maxHeight * (0.46 + 0.06),
+              top: constraint.maxHeight * (0.48 + 0.04),
             ),
           ),
           Container(
             child: Center(
               child: Container(
                 child: Icon(
-                  Icons.repeat,
+                  Icons.autorenew,
                   color: Theme.of(context).accentColor,
+                  size: constraint.maxHeight * 0.1,
                 ),
               ),
             ),
-            height: constraint.maxHeight * 0.2,
+            height: constraint.maxHeight * 0.18,
             margin: EdgeInsets.only(
-              top: constraint.maxHeight * (0.4),
+              top: constraint.maxHeight * (0.41),
             ),
             decoration: new BoxDecoration(
               color: Theme.of(context).backgroundColor,
