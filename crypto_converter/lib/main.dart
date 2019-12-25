@@ -16,9 +16,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Color.fromRGBO(30, 30, 30, 1),
         primaryColor: Colors.white,
         canvasColor: Color.fromRGBO(60, 60, 60, 1),
-        
         textTheme: TextTheme(
-
           headline: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -37,10 +35,7 @@ class MyApp extends StatelessWidget {
             fontSize: 28,
             color: Colors.white,
           ),
-
-      
         ),
-        
       ),
       home: MyHomePage(),
     );
@@ -67,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Theme.of(context).backgroundColor,
       body: Container(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             Container(
               child: TopBar(),
@@ -79,37 +74,15 @@ class _MyHomePageState extends State<MyHomePage> {
               child: MainConverter(),
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
-                  0.38,
+                  0.46,
               width: MediaQuery.of(context).size.width * 0.8,
             ),
             Container(
               child: MainKeyboard(),
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
-                  0.3,
+                  0.4,
             ),
-            Container(
-               
-              child: RaisedButton(
-                onPressed: () {},
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                color: Theme.of(context).accentColor,
-                padding: EdgeInsets.symmetric(
-                    vertical: MediaQuery.of(context).size.height * 0.02),
-                elevation: 3,
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: Center(
-                    child: Text(
-                      'Convert',
-                      style: TextStyle(fontSize: 22),
-                    ),
-                  ),
-                ),
-              ),
-            )
           ],
         ),
       ),

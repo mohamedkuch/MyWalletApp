@@ -25,7 +25,7 @@ class ConverterSingle extends StatelessWidget {
                   child: Text(
                     '$title',
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 14,
                       fontWeight: FontWeight.normal,
                     ),
                   ),
@@ -58,6 +58,7 @@ class ConverterSingle extends StatelessWidget {
               fontWeight: FontWeight.normal,
             ),
           ),
+
           margin: EdgeInsets.only(left: 20),
         ),
       ],

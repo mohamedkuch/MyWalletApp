@@ -37,6 +37,7 @@ class _CurrencySingleState extends State<CurrencySingle> {
           child: Container(
             child: Text(
               value,
+              style: TextStyle(fontSize: 14),
             ),
             decoration: BoxDecoration(
             ),
