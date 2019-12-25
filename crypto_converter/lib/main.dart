@@ -65,7 +65,10 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             Container(
-              child: TopBar(),
+              child: Align(
+                child: TopBar(),
+                alignment: Alignment.centerRight
+              ),
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
                   0.1,
