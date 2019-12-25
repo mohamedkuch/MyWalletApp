@@ -3,7 +3,6 @@ import './top_bar.dart';
 import './converter.dart';
 import './keyboard.dart';
 
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -14,8 +13,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         accentColor: Color.fromRGBO(190, 161, 141, 1),
-        primaryColor: Color.fromRGBO(30, 30, 30, 1),
+        backgroundColor: Color.fromRGBO(30, 30, 30, 1),
+        primaryColor: Colors.white,
+        canvasColor: Color.fromRGBO(60, 60, 60, 1),
+        
         textTheme: TextTheme(
+
           headline: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -31,11 +34,13 @@ class MyApp extends StatelessWidget {
           ),
           button: TextStyle(
             fontWeight: FontWeight.w300,
-
             fontSize: 28,
             color: Colors.white,
           ),
+
+      
         ),
+        
       ),
       home: MyHomePage(),
     );
@@ -59,39 +64,40 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Theme.of(context).backgroundColor,
       body: Container(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Container(
               child: TopBar(),
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
-                  0.15,
+                  0.1,
             ),
             Container(
               child: MainConverter(),
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
-                  0.4,
-              width:MediaQuery.of(context).size.width * 0.8  ,
-              
+                  0.38,
+              width: MediaQuery.of(context).size.width * 0.8,
             ),
             Container(
               child: MainKeyboard(),
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
-                  0.37,
+                  0.3,
             ),
             Container(
+               
               child: RaisedButton(
                 onPressed: () {},
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
                 color: Theme.of(context).accentColor,
-                padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.025),
-
+                padding: EdgeInsets.symmetric(
+                    vertical: MediaQuery.of(context).size.height * 0.02),
                 elevation: 3,
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.8,

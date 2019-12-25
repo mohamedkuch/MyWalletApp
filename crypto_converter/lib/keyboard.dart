@@ -21,9 +21,17 @@ class MainKeyboard extends StatelessWidget {
             children: groupedNumbers(3, 7).map((data) {
               return FlatButton(
                 onPressed: () {},
-                child: Text(
-                  data['index'],
-                  style: Theme.of(context).textTheme.button,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Container(
+                  height: double.infinity,
+                  child: Center(
+                    child: Text(
+                      data['index'],
+                      style: Theme.of(context).textTheme.button,
+                    ),
+                  ),
                 ),
               );
             }).toList(),
@@ -35,53 +43,91 @@ class MainKeyboard extends StatelessWidget {
             children: groupedNumbers(3, 4).map((data) {
               return FlatButton(
                 onPressed: () {},
-                child: Text(
-                  data['index'],
-                  style: Theme.of(context).textTheme.button,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Container(
+                  height: double.infinity,
+                  child: Center(
+                    child: Text(
+                      data['index'],
+                      style: Theme.of(context).textTheme.button,
+                    ),
+                  ),
                 ),
               );
             }).toList(),
           ),
         ),
         Expanded(
-                  child: Row(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: groupedNumbers(3, 1).map((data) {
               return FlatButton(
                 onPressed: () {},
-                child: Text(
-                  data['index'],
-                  style: Theme.of(context).textTheme.button,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Container(
+                  height: double.infinity,
+                  child: Center(
+                    child: Text(
+                      data['index'],
+                      style: Theme.of(context).textTheme.button,
+                    ),
+                  ),
                 ),
               );
             }).toList(),
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            FlatButton(
-              onPressed: () {},
-              child: Text(
-                '0',
-                style: Theme.of(context).textTheme.button,
+        Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              FlatButton(
+                onPressed: () {},
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Container(
+                  height: double.infinity,
+                  child: Center(
+                    child: Text(
+                      '0',
+                      style: Theme.of(context).textTheme.button,
+                    ),
+                  ),
+                ),
               ),
-            ),
-            FlatButton(
-              onPressed: () {},
-              child: Text(
-                ',',
-                style: Theme.of(context).textTheme.button,
+              FlatButton(
+                onPressed: () {},
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Container(
+                  height: double.infinity,
+                  child: Text(
+                    ',',
+                    style: Theme.of(context).textTheme.button,
+                  ),
+                ),
               ),
-            ),
-            FlatButton(
-              onPressed: () {},
-              child: Icon(
-                Icons.backspace,
-                color: Theme.of(context).textTheme.button.color,
-              ),
-            )
-          ],
+              FlatButton(
+                onPressed: () {},
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Container(
+                  height: double.infinity,
+                  child: Icon(
+                    Icons.backspace,
+                    color: Theme.of(context).textTheme.button.color,
+                  ),
+                ),
+              )
+            ],
+          ),
         )
       ],
     );

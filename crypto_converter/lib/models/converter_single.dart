@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './currency_single.dart';
 
 class ConverterSingle extends StatelessWidget {
   @required
@@ -24,7 +25,7 @@ class ConverterSingle extends StatelessWidget {
                   child: Text(
                     '$title',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 15,
                       fontWeight: FontWeight.normal,
                     ),
                   ),
@@ -38,13 +39,7 @@ class ConverterSingle extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Center(
-                  child: Text(
-                    '$currency',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
+                  child:CurrencySingle(),
                 ),
               ),
             ],

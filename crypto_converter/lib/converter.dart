@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './converter_single.dart';
+import './models/converter_single.dart';
 
 
 class MainConverter extends StatefulWidget {
@@ -53,7 +53,7 @@ class _MainConverterState extends State<MainConverter> {
               top: constraint.maxHeight * (0.4),
             ),
             decoration: new BoxDecoration(
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).backgroundColor,
               shape: BoxShape.circle,
             ),
           ),
