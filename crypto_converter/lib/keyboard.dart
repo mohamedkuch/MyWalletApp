@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 
-typedef void StringCallback(String val);
+typedef void StringCallback(String val1, String val2 );
 
-class MainKeyboard extends StatelessWidget {
+class MainKeyboard extends StatefulWidget {
   final StringCallback callback;
   MainKeyboard({this.callback});
+
+  @override
+  _MainKeyboardState createState() => _MainKeyboardState();
+}
+
+class _MainKeyboardState extends State<MainKeyboard> {
+  String finalDataTop = "";
+  String finalDataBottom = "ww";
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +35,10 @@ class MainKeyboard extends StatelessWidget {
             children: groupedNumbers(3, 7).map((data) {
               return FlatButton(
                 onPressed: () {
-                  callback(data['index'].toString());
+                  setState(() {
+                    finalDataTop += data['index'].toString();
+                  });
+                  widget.callback(finalDataTop, finalDataBottom);
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),

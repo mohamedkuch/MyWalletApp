@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import './models/converter_single.dart';
 
 class MainConverter extends StatefulWidget {
-  final String data;
+  final String dataTop;
+  final String dataBottom;
 
-  MainConverter(this.data);
+
+  MainConverter(this.dataTop, this.dataBottom);
 
   @override
   _MainConverterState createState() => _MainConverterState();
@@ -37,7 +39,7 @@ class _MainConverterState extends State<MainConverter> {
                   new Radius.circular(20.0),
                 ),
               ),
-              child: ConverterSingle('${widget.data}', 'British Pound', 'GBP'),
+              child: ConverterSingle('${widget.dataTop}', 'British Pound', 'GBP'),
             ),
           ),
           GestureDetector(
@@ -52,7 +54,7 @@ class _MainConverterState extends State<MainConverter> {
                   new Radius.circular(20.0),
                 ),
               ),
-              child: ConverterSingle('${widget.data}', 'US Dollar', 'USD'),
+              child: ConverterSingle('${widget.dataBottom}', 'US Dollar', 'USD'),
               margin: EdgeInsets.only(
                 top: constraint.maxHeight * (0.48 + 0.04),
               ),

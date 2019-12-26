@@ -48,7 +48,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _keyboardListener = "Not set yet";
+  String _keyboardListenerTop = "Not set yet";
+  String _keyboardListenerBottom = "Not set yet";
+
   
   @override
   Widget build(BuildContext context) {
@@ -68,14 +70,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   0.1,
             ),
             Container(
-              child: MainConverter(_keyboardListener),
+              child: MainConverter(_keyboardListenerTop, _keyboardListenerBottom),
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
                   0.46,
               width: MediaQuery.of(context).size.width * 0.8,
             ),
             Container(
-              child: MainKeyboard(callback: (val) => setState(() => _keyboardListener = val)),
+              child: MainKeyboard(callback: (val1 , val2) => setState(() => _keyboardListenerTop = val1)),
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
                   0.4,
