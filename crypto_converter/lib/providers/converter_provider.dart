@@ -35,7 +35,26 @@ class ConverterProvider with ChangeNotifier {
   }
   setActiveCurrencyTop(input) {
     _activeCurrencyTop = input;
+    _printData();
     notifyListeners();
+  }
+  setActiveCurrencyBottom(input) {
+    _activeCurrencyBottom = input;
+    _printData();
+
+    notifyListeners();
+  }
+
+  void _printData(){
+    print(_topActive);
+    print(_bottomActive);
+    print(_zeroStateTop);
+    print(_zeroStateBottom);
+    print(_valueTop);
+    print(_valueBottom);
+    print(_activeCurrencyTop);
+    print(_activeCurrencyBottom);
+
   }
   bool get isTopActive => _topActive;
   bool get isBottomActive => _bottomActive;

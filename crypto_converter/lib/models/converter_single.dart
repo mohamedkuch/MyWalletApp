@@ -8,8 +8,9 @@ class ConverterSingle extends StatelessWidget {
   final String title;
   @required
   final String amount;
+  final bool isTop;
 
-  ConverterSingle(this.amount, this.title, this.currency);
+  ConverterSingle(this.amount, this.title, this.currency, this.isTop);
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class ConverterSingle extends StatelessWidget {
                 flex: 2,
                 child: Container(
                   child: Align(
-                    child: CurrencySingle(),
+                    child: CurrencySingle(this.isTop),
                     alignment: Alignment.centerRight,
                   ),
                   margin: EdgeInsets.only(right: 20),

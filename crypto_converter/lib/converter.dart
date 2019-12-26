@@ -29,7 +29,7 @@ class MainConverter extends StatelessWidget {
                 ),
               ),
               child:
-                  ConverterSingle(cvProvider.getValueTop, 'British Pound', 'GBP'),
+                  ConverterSingle(cvProvider.getValueTop, 'British Pound', 'GBP', true),
             ),
           ),
           GestureDetector(
@@ -45,7 +45,7 @@ class MainConverter extends StatelessWidget {
                 ),
               ),
               child:
-                  ConverterSingle(cvProvider.getValueBottom, 'US Dollar', 'USD'),
+                  ConverterSingle(cvProvider.getValueBottom, 'US Dollar', 'USD', false),
               margin: EdgeInsets.only(
                 top: constraint.maxHeight * (0.48 + 0.04),
               ),
