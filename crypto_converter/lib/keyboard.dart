@@ -3,12 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'providers/converter_provider.dart';
 
-class MainKeyboard extends StatefulWidget {
-  @override
-  _MainKeyboardState createState() => _MainKeyboardState();
-}
-
-class _MainKeyboardState extends State<MainKeyboard> {
+class MainKeyboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ConverterProvider cvProvider =
@@ -35,9 +30,16 @@ class _MainKeyboardState extends State<MainKeyboard> {
             children: groupedNumbers(3, 7).map((data) {
               return FlatButton(
                 onPressed: () {
-                  if (cvProvider.getZeroStateTop) finalDataTop = "";
-                  cvProvider
-                      .setValueTop(finalDataTop += data['index'].toString());
+                  if (cvProvider.isTopActive) {
+                    if (cvProvider.getZeroStateTop) finalDataTop = "";
+                    cvProvider
+                        .setValueTop(finalDataTop += data['index'].toString());
+                  }
+                  if(cvProvider.isBottomActive) {
+                    if (cvProvider.getZeroStateBottom) finalDataBottom = "";
+                    cvProvider
+                        .setValueBottom(finalDataBottom += data['index'].toString());
+                  }
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),

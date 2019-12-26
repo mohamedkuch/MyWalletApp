@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class CurrencySingle extends StatefulWidget {
-  CurrencySingle({Key key}) : super(key: key);
+import '../providers/converter_provider.dart';
 
-  @override
-  _CurrencySingleState createState() => _CurrencySingleState();
-}
+class CurrencySingle extends StatelessWidget {
 
-class _CurrencySingleState extends State<CurrencySingle> {
-  String dropdownValue = 'BTC';
   @override
   Widget build(BuildContext context) {
+    final ConverterProvider cvProvider =
+        Provider.of<ConverterProvider>(context);
+
     return DropdownButton<String>(
-      value: dropdownValue,
+      value: cvProvider.getActiveCurrencyTop,
       icon: Icon(
         Icons.keyboard_arrow_down,
         color: Theme.of(context).primaryColor,
@@ -26,9 +25,7 @@ class _CurrencySingleState extends State<CurrencySingle> {
         height: 1,
       ),
       onChanged: (String newValue) {
-        setState(() {
-          dropdownValue = newValue;
-        });
+        cvProvider.setActiveCurrencyTop(newValue);
       },
       items: <String>['BTC', 'EUR', 'USD', 'ETH']
           .map<DropdownMenuItem<String>>((String value) {
@@ -39,8 +36,7 @@ class _CurrencySingleState extends State<CurrencySingle> {
               value,
               style: TextStyle(fontSize: 14),
             ),
-            decoration: BoxDecoration(
-            ),
+            decoration: BoxDecoration(),
           ),
         );
       }).toList(),

@@ -4,10 +4,6 @@ import './models/converter_single.dart';
 import 'providers/converter_provider.dart';
 
 class MainConverter extends StatelessWidget {
-  final String dataTop;
-  final String dataBottom;
-
-  MainConverter(this.dataTop, this.dataBottom);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +29,7 @@ class MainConverter extends StatelessWidget {
                 ),
               ),
               child:
-                  ConverterSingle('$dataTop', 'British Pound', 'GBP'),
+                  ConverterSingle(cvProvider.getValueTop, 'British Pound', 'GBP'),
             ),
           ),
           GestureDetector(
@@ -49,7 +45,7 @@ class MainConverter extends StatelessWidget {
                 ),
               ),
               child:
-                  ConverterSingle('$dataBottom', 'US Dollar', 'USD'),
+                  ConverterSingle(cvProvider.getValueBottom, 'US Dollar', 'USD'),
               margin: EdgeInsets.only(
                 top: constraint.maxHeight * (0.48 + 0.04),
               ),

@@ -56,8 +56,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final ConverterProvider cvProvider =
-        Provider.of<ConverterProvider>(context);
 
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
@@ -72,10 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   0.1,
             ),
             Container(
-              child: MainConverter(
-                cvProvider.getValueTop,
-                cvProvider.getValueBottom,
-              ),
+              child: MainConverter(),
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
                   0.46,
