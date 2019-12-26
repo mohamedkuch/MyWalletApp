@@ -14,13 +14,14 @@ class CurrencySingle extends StatefulWidget {
 
 class _CurrencySingleState extends State<CurrencySingle> {
   String dropdownValue = 'BTC';
+  String dropdownValueBottom = 'USD';
   @override
   Widget build(BuildContext context) {
     final ConverterProvider cvProvider =
         Provider.of<ConverterProvider>(context);
 
     return DropdownButton<String>(
-      value: dropdownValue,
+      value: widget.isTop ? dropdownValue : dropdownValueBottom,
       icon: Icon(
         Icons.keyboard_arrow_down,
         color: Theme.of(context).primaryColor,
@@ -35,7 +36,10 @@ class _CurrencySingleState extends State<CurrencySingle> {
       ),
       onChanged: (String newValue) {
         setState(() {
-          dropdownValue = newValue;
+          if(widget.isTop)
+            dropdownValue = newValue;
+          else
+            dropdownValueBottom = newValue;
         });
         if(widget.isTop)
           cvProvider.setActiveCurrencyTop(newValue);

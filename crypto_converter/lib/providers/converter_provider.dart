@@ -14,12 +14,16 @@ class ConverterProvider with ChangeNotifier {
     _topActive = tmp;
     _bottomActive = !tmp;
     notifyListeners();
+    _printData();
+
   }
 
   setBottom(bool tmp) {
     _bottomActive = tmp;
     _topActive = !tmp;
     notifyListeners();
+    _printData();
+
   }
 
   setValueTop(String val) {
@@ -35,12 +39,10 @@ class ConverterProvider with ChangeNotifier {
   }
   setActiveCurrencyTop(input) {
     _activeCurrencyTop = input;
-    _printData();
     notifyListeners();
   }
   setActiveCurrencyBottom(input) {
     _activeCurrencyBottom = input;
-    _printData();
 
     notifyListeners();
   }
@@ -48,8 +50,6 @@ class ConverterProvider with ChangeNotifier {
   void _printData(){
     print(_topActive);
     print(_bottomActive);
-    print(_zeroStateTop);
-    print(_zeroStateBottom);
     print(_valueTop);
     print(_valueBottom);
     print(_activeCurrencyTop);
