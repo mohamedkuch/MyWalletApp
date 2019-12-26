@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import './top_bar.dart';
 import './converter.dart';
 import './keyboard.dart';
+import './providers/converter_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,35 +11,38 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        accentColor: Color.fromRGBO(190, 161, 141, 1),
-        backgroundColor: Color.fromRGBO(30, 30, 30, 1),
-        primaryColor: Colors.white,
-        canvasColor: Color.fromRGBO(60, 60, 60, 1),
-        textTheme: TextTheme(
-          headline: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-          title: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-          body1: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 28.0,
-            color: Colors.white,
-          ),
-          button: TextStyle(
-            fontWeight: FontWeight.w300,
-            fontSize: 28,
-            color: Colors.white,
+    return ChangeNotifierProvider<ConverterProvider>.value(
+      value: ConverterProvider(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          accentColor: Color.fromRGBO(190, 161, 141, 1),
+          backgroundColor: Color.fromRGBO(30, 30, 30, 1),
+          primaryColor: Colors.white,
+          canvasColor: Color.fromRGBO(60, 60, 60, 1),
+          textTheme: TextTheme(
+            headline: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+            title: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+            body1: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 28.0,
+              color: Colors.white,
+            ),
+            button: TextStyle(
+              fontWeight: FontWeight.w300,
+              fontSize: 28,
+              color: Colors.white,
+            ),
           ),
         ),
+        home: MyHomePage(),
       ),
-      home: MyHomePage(),
     );
   }
 }
@@ -48,12 +53,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _keyboardListenerTop = "Not set yet";
-  String _keyboardListenerBottom = "Not set yet";
 
-  
   @override
   Widget build(BuildContext context) {
+    final ConverterProvider cvProvider =
+        Provider.of<ConverterProvider>(context);
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Container(
@@ -61,23 +66,23 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             Container(
-              child: Align(
-                child: TopBar(),
-                alignment: Alignment.centerRight
-              ),
+              child: Align(child: TopBar(), alignment: Alignment.centerRight),
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
                   0.1,
             ),
             Container(
-              child: MainConverter(_keyboardListenerTop, _keyboardListenerBottom),
+              child: MainConverter(
+                cvProvider.getValueTop,
+                cvProvider.getValueBottom,
+              ),
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
                   0.46,
               width: MediaQuery.of(context).size.width * 0.8,
             ),
             Container(
-              child: MainKeyboard(callback: (val1 , val2) => setState(() => _keyboardListenerTop = val1)),
+              child: MainKeyboard(),
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
                   0.4,

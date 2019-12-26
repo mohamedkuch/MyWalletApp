@@ -1,45 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import './models/converter_single.dart';
+import 'providers/converter_provider.dart';
 
-class MainConverter extends StatefulWidget {
+class MainConverter extends StatelessWidget {
   final String dataTop;
   final String dataBottom;
-
 
   MainConverter(this.dataTop, this.dataBottom);
 
   @override
-  _MainConverterState createState() => _MainConverterState();
-}
-
-class _MainConverterState extends State<MainConverter> {
-  var bottomConverterActive = false;
-  var topConverterActive = true;
-
-  @override
   Widget build(BuildContext context) {
+    final ConverterProvider cvProvider =
+        Provider.of<ConverterProvider>(context);
+
     return LayoutBuilder(builder: (ctx, constraint) {
       return Stack(
         children: <Widget>[
           GestureDetector(
             onTap: () {
-              setState(() {
-                bottomConverterActive = false;
-                topConverterActive = true;
-              });
+              cvProvider.setTop(true);
             },
             child: Container(
               width: double.infinity,
               height: constraint.maxHeight * 0.46,
               decoration: new BoxDecoration(
-                color: topConverterActive
+                color: cvProvider.isTopActive
                     ? Color.fromRGBO(74, 74, 74, 1)
                     : Color.fromRGBO(74, 74, 74, 0.3),
                 borderRadius: new BorderRadius.all(
                   new Radius.circular(20.0),
                 ),
               ),
-              child: ConverterSingle('${widget.dataTop}', 'British Pound', 'GBP'),
+              child:
+                  ConverterSingle('$dataTop', 'British Pound', 'GBP'),
             ),
           ),
           GestureDetector(
@@ -47,23 +41,21 @@ class _MainConverterState extends State<MainConverter> {
               width: double.infinity,
               height: constraint.maxHeight * 0.48,
               decoration: new BoxDecoration(
-                color: bottomConverterActive
+                color: cvProvider.isBottomActive
                     ? Color.fromRGBO(74, 74, 74, 1)
                     : Color.fromRGBO(74, 74, 74, 0.3),
                 borderRadius: new BorderRadius.all(
                   new Radius.circular(20.0),
                 ),
               ),
-              child: ConverterSingle('${widget.dataBottom}', 'US Dollar', 'USD'),
+              child:
+                  ConverterSingle('$dataBottom', 'US Dollar', 'USD'),
               margin: EdgeInsets.only(
                 top: constraint.maxHeight * (0.48 + 0.04),
               ),
             ),
             onTap: () {
-              setState(() {
-                bottomConverterActive = true;
-                topConverterActive = false;
-              });
+              cvProvider.setBottom(true);
             },
           ),
           Container(

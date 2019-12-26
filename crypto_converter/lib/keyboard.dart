@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-typedef void StringCallback(String val1, String val2 );
+import 'providers/converter_provider.dart';
 
 class MainKeyboard extends StatefulWidget {
-  final StringCallback callback;
-  MainKeyboard({this.callback});
-
   @override
   _MainKeyboardState createState() => _MainKeyboardState();
 }
 
 class _MainKeyboardState extends State<MainKeyboard> {
-  String finalDataTop = "";
-  String finalDataBottom = "ww";
-
-
   @override
   Widget build(BuildContext context) {
+    final ConverterProvider cvProvider =
+        Provider.of<ConverterProvider>(context);
+
+    String finalDataTop = cvProvider.getValueTop;
+    String finalDataBottom = cvProvider.getValueBottom;
+
     List<Map<String, String>> groupedNumbers(max, fixer) {
       return List.generate(max, (index) {
         return {
@@ -35,10 +35,9 @@ class _MainKeyboardState extends State<MainKeyboard> {
             children: groupedNumbers(3, 7).map((data) {
               return FlatButton(
                 onPressed: () {
-                  setState(() {
-                    finalDataTop += data['index'].toString();
-                  });
-                  widget.callback(finalDataTop, finalDataBottom);
+                  if (cvProvider.getZeroStateTop) finalDataTop = "";
+                  cvProvider
+                      .setValueTop(finalDataTop += data['index'].toString());
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
