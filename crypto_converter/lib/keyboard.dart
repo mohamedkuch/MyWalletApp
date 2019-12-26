@@ -21,6 +21,17 @@ class MainKeyboard extends StatelessWidget {
       }).toList();
     }
 
+    _pressButton(data) {
+      if (cvProvider.isTopActive) {
+        if (cvProvider.getZeroStateTop) finalDataTop = "";
+        cvProvider.setValueTop(finalDataTop += data);
+      }
+      if (cvProvider.isBottomActive) {
+        if (cvProvider.getZeroStateBottom) finalDataBottom = "";
+        cvProvider.setValueBottom(finalDataBottom += data);
+      }
+    }
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
@@ -30,16 +41,7 @@ class MainKeyboard extends StatelessWidget {
             children: groupedNumbers(3, 7).map((data) {
               return FlatButton(
                 onPressed: () {
-                  if (cvProvider.isTopActive) {
-                    if (cvProvider.getZeroStateTop) finalDataTop = "";
-                    cvProvider
-                        .setValueTop(finalDataTop += data['index'].toString());
-                  }
-                  if(cvProvider.isBottomActive) {
-                    if (cvProvider.getZeroStateBottom) finalDataBottom = "";
-                    cvProvider
-                        .setValueBottom(finalDataBottom += data['index'].toString());
-                  }
+                  _pressButton(data['index'].toString());
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
@@ -62,7 +64,9 @@ class MainKeyboard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: groupedNumbers(3, 4).map((data) {
               return FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  _pressButton(data['index'].toString());
+                },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
@@ -84,7 +88,9 @@ class MainKeyboard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: groupedNumbers(3, 1).map((data) {
               return FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  _pressButton(data['index'].toString());
+                },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
@@ -106,7 +112,9 @@ class MainKeyboard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  _pressButton('0');
+                },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),

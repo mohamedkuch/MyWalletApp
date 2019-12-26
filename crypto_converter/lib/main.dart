@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
                   0.46,
-              width: MediaQuery.of(context).size.width * 0.8,
+              width: MediaQuery.of(context).size.width * 0.86,
             ),
             Container(
               child: MainKeyboard(),
