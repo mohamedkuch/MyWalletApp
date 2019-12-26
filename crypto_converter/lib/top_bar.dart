@@ -15,7 +15,7 @@ class TopBar extends StatelessWidget {
             child: IconButton(
               icon: Icon(
                 Icons.info_outline,
-                size: 35,
+                size: 30,
               ),
               onPressed: () {},
               color: Theme.of(context).accentColor,

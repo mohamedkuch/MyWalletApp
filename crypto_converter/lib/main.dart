@@ -48,14 +48,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+  String _keyboardListener = "Not set yet";
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,14 +68,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   0.1,
             ),
             Container(
-              child: MainConverter(),
+              child: MainConverter(_keyboardListener),
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
                   0.46,
               width: MediaQuery.of(context).size.width * 0.8,
             ),
             Container(
-              child: MainKeyboard(),
+              child: MainKeyboard(callback: (val) => setState(() => _keyboardListener = val)),
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
                   0.4,

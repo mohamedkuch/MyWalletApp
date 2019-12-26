@@ -7,7 +7,7 @@ class ConverterSingle extends StatelessWidget {
   @required
   final String title;
   @required
-  final double amount;
+  final String amount;
 
   ConverterSingle(this.amount, this.title, this.currency);
 
