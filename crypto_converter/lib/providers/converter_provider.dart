@@ -19,14 +19,12 @@ class ConverterProvider with ChangeNotifier {
     _topActive = tmp;
     _bottomActive = !tmp;
     notifyListeners();
-    _printData();
   }
 
   setBottom(bool tmp) {
     _bottomActive = tmp;
     _topActive = !tmp;
     notifyListeners();
-    _printData();
   }
 
   setValueTop(String val) {
@@ -51,17 +49,19 @@ class ConverterProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  getCryptoPrices() async {
-    print('getting crypto prices'); //print
-    String _apiURL =
-        "https://api.coinmarketcap.com/v1/ticker/"; //url to get data
-    http.Response response = await http.get(_apiURL);
-    _cryptoList = jsonDecode(response.body);
-    _cryptoSymolList = [];
-    for (int i = 0; i < 20; i++) {
-      _cryptoSymolList.add(_cryptoList[i]['symbol'].toString());
+  Future<void> getCryptoPrices() async {
+    const _apiURL = "https://api.coinmarketcap.com/v1/ticker/";
+    try {
+      http.Response response = await http.get(_apiURL);
+      _cryptoList = jsonDecode(response.body);
+      _cryptoSymolList = [];
+      for (int i = 0; i < 20; i++) {
+        _cryptoSymolList.add(_cryptoList[i]['symbol'].toString());
+      }
+    } catch (error) {
+      print(error);
+      throw error;
     }
-    return;
   }
 
   void _printData() {

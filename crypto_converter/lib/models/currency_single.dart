@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../providers/converter_provider.dart';
 
 class CurrencySingle extends StatefulWidget {
   final bool isTop;
@@ -13,16 +11,14 @@ class CurrencySingle extends StatefulWidget {
 }
 
 class _CurrencySingleState extends State<CurrencySingle> {
+    String dropdownValue = "BTC";
+
   @override
   Widget build(BuildContext context) {
-    final ConverterProvider cvProvider =
-        Provider.of<ConverterProvider>(context);
-
-    String dropdownValue = 'BTC';
-    String dropdownValueBottom = 'BTC';
+    
 
     return DropdownButton<String>(
-      value: widget.isTop ? dropdownValue : dropdownValueBottom,
+      value: dropdownValue,
       icon: Icon(
         Icons.keyboard_arrow_down,
         color: Theme.of(context).primaryColor,
@@ -36,18 +32,8 @@ class _CurrencySingleState extends State<CurrencySingle> {
         height: 1,
       ),
       onChanged: (String newValue) {
-        setState(() {
-          if (widget.isTop)
-            dropdownValue = newValue;
-          else
-            dropdownValueBottom = newValue;
-        });
-        if (widget.isTop)
-          cvProvider.setActiveCurrencyTop(newValue);
-        else
-          cvProvider.setActiveCurrencyBottom(newValue);
       },
-      items: cvProvider.getCryptoSymbolList
+      items: ["BTC", "USD"]
           .map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
