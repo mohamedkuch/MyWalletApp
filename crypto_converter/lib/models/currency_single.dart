@@ -13,12 +13,13 @@ class CurrencySingle extends StatefulWidget {
 }
 
 class _CurrencySingleState extends State<CurrencySingle> {
-  String dropdownValue = 'BTC';
-  String dropdownValueBottom = 'USD';
   @override
   Widget build(BuildContext context) {
     final ConverterProvider cvProvider =
         Provider.of<ConverterProvider>(context);
+
+    String dropdownValue = 'BTC';
+    String dropdownValueBottom = 'BTC';
 
     return DropdownButton<String>(
       value: widget.isTop ? dropdownValue : dropdownValueBottom,
@@ -36,18 +37,17 @@ class _CurrencySingleState extends State<CurrencySingle> {
       ),
       onChanged: (String newValue) {
         setState(() {
-          if(widget.isTop)
+          if (widget.isTop)
             dropdownValue = newValue;
           else
             dropdownValueBottom = newValue;
         });
-        if(widget.isTop)
+        if (widget.isTop)
           cvProvider.setActiveCurrencyTop(newValue);
         else
           cvProvider.setActiveCurrencyBottom(newValue);
-
       },
-      items: <String>['BTC', 'EUR', 'USD', 'ETH']
+      items: cvProvider.getCryptoSymbolList
           .map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,

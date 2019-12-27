@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class ConverterProvider with ChangeNotifier {
   bool _topActive = true;
@@ -9,13 +12,14 @@ class ConverterProvider with ChangeNotifier {
   String _valueBottom = "Not yet set";
   String _activeCurrencyTop = "BTC";
   String _activeCurrencyBottom = "USD";
+  List _cryptoList;
+  List<String> _cryptoSymolList = ["BTC", "USD"];
 
   setTop(bool tmp) {
     _topActive = tmp;
     _bottomActive = !tmp;
     notifyListeners();
     _printData();
-
   }
 
   setBottom(bool tmp) {
@@ -23,7 +27,6 @@ class ConverterProvider with ChangeNotifier {
     _topActive = !tmp;
     notifyListeners();
     _printData();
-
   }
 
   setValueTop(String val) {
@@ -37,32 +40,49 @@ class ConverterProvider with ChangeNotifier {
     _zeroStateBottom = false;
     notifyListeners();
   }
+
   setActiveCurrencyTop(input) {
     _activeCurrencyTop = input;
     notifyListeners();
   }
+
   setActiveCurrencyBottom(input) {
     _activeCurrencyBottom = input;
-
     notifyListeners();
   }
 
-  void _printData(){
+  getCryptoPrices() async {
+    print('getting crypto prices'); //print
+    String _apiURL =
+        "https://api.coinmarketcap.com/v1/ticker/"; //url to get data
+    http.Response response = await http.get(_apiURL);
+    _cryptoList = jsonDecode(response.body);
+    _cryptoSymolList = [];
+    for (int i = 0; i < 20; i++) {
+      _cryptoSymolList.add(_cryptoList[i]['symbol'].toString());
+    }
+    return;
+  }
+
+  void _printData() {
     print(_topActive);
     print(_bottomActive);
     print(_valueTop);
     print(_valueBottom);
     print(_activeCurrencyTop);
     print(_activeCurrencyBottom);
-
   }
+
   bool get isTopActive => _topActive;
   bool get isBottomActive => _bottomActive;
   bool get getZeroStateTop => _zeroStateTop;
   bool get getZeroStateBottom => _zeroStateBottom;
+
   String get getValueTop => _valueTop;
   String get getValueBottom => _valueBottom;
-
   String get getActiveCurrencyTop => _activeCurrencyTop;
   String get getActiveCurrencyBottom => _activeCurrencyBottom;
+
+  List get getCryptoList => _cryptoList;
+  List<String> get getCryptoSymbolList => _cryptoSymolList;
 }

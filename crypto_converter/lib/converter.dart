@@ -4,6 +4,7 @@ import './models/converter_single.dart';
 import 'providers/converter_provider.dart';
 
 class MainConverter extends StatelessWidget {
+  MainConverter();
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +29,12 @@ class MainConverter extends StatelessWidget {
                   new Radius.circular(20.0),
                 ),
               ),
-              child:
-                  ConverterSingle(cvProvider.getValueTop, 'British Pound', 'GBP', true),
+              child: ConverterSingle(
+                cvProvider.getValueTop,
+                'British Pound',
+                'GBP',
+                true,
+              ),
             ),
           ),
           GestureDetector(
@@ -44,8 +49,12 @@ class MainConverter extends StatelessWidget {
                   new Radius.circular(20.0),
                 ),
               ),
-              child:
-                  ConverterSingle(cvProvider.getValueBottom, 'US Dollar', 'USD', false),
+              child: ConverterSingle(
+                cvProvider.getValueBottom,
+                'US Dollar',
+                'USD',
+                false,
+              ),
               margin: EdgeInsets.only(
                 top: constraint.maxHeight * (0.48 + 0.04),
               ),

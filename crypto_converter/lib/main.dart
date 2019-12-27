@@ -4,6 +4,7 @@ import './converter.dart';
 import './keyboard.dart';
 import './providers/converter_provider.dart';
 import 'package:provider/provider.dart';
+import 'dart:core';
 
 void main() => runApp(MyApp());
 
@@ -53,10 +54,39 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var _isInit = true;
+  var _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    final ConverterProvider cvProvider =
+        Provider.of<ConverterProvider>(context);
+
+    if (_isInit) {
+      setState(() {
+        _isLoading = true;
+      });
+         cvProvider.getCryptoPrices().then((_) {
+        setState(() {
+          _isLoading = false;
+        print(_isLoading);
+
+
+        });
+      });
+    }
+    _isInit = false;
+    super.didChangeDependencies();
+  }
+
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Container(
